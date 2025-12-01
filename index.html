@@ -1,113 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RanvirPardeshi DNS Setup Guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Showcase</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            margin: 0;
-            padding: 40px 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 750px;
-            margin: auto;
-            padding: 30px 40px;
-            background: #0d0d0d;
-            border: 1px solid #222;
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .site-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #111111;
+            margin-bottom: 12px;
+        }
+
+        .site-subtitle {
+            font-size: 1.125rem;
+            color: #666666;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        /* Media Item Styles */
+        .media-item {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .media-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Media Container for consistent styling */
+        .media-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
             border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background-color: #f5f5f5;
         }
-        h2 {
+
+        /* Image Styles */
+        .media-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .media-container:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Video Styles */
+        .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            background-color: #000000;
+        }
+
+        /* Video wrapper for aspect ratio */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Media Title Styles */
+        .media-title {
+            font-size: 1.125rem;
             font-weight: 600;
-            font-size: 26px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            letter-spacing: 0.3px;
+            color: #333333;
         }
-        .dns-box {
-            background: #111;
-            padding: 18px 20px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            margin-bottom: 15px;
-            font-size: 17px;
-            word-break: break-all;
+
+        .media-description {
+            font-size: 0.95rem;
+            color: #888888;
+            margin-top: 6px;
+            font-weight: 400;
         }
-        .label {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #fff;
+
+        /* Divider between items */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: #eeeeee;
+            margin: 0 auto 80px;
+            border-radius: 1px;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fafafa;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: #999999;
+            letter-spacing: 0.2px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            header {
+                padding: 60px 16px 40px;
+            }
+
+            .site-title {
+                font-size: 2rem;
+            }
+
+            .site-subtitle {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 40px 16px 60px;
+            }
+
+            .media-item {
+                margin-bottom: 60px;
+            }
+
+            .divider {
+                margin-bottom: 60px;
+            }
+
+            .media-container,
+            .video-wrapper {
+                border-radius: 8px;
+            }
+
+            .media-container img,
+            .video-wrapper video {
+                border-radius: 8px;
+            }
+
+            .media-title {
+                font-size: 1rem;
+                margin-top: 16px;
+            }
+        }
+
+        /* Loading placeholder for images */
+        .media-container img {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
         }
     </style>
 </head>
 <body>
-    <div class="container" style="margin-bottom:25px; border:1px solid #333; background:#0b0b0b; padding:25px;">
-        <div class="dns-box" style="background:#141414;">
-            <div class="label" style="font-size:20px;">Important Notice</div>
-            This DNS is designed for blocking gaming sites, time‑wasting websites, and unwanted content.<br>
-            It is intended strictly for office, school, and work environments.<br><br>
-            Specially configured for <strong>Nakshatra Infotech</strong>.
-        </div>
-    </div>
 
-    <div class="container main-container">
+    <!-- Header Section -->
+    <header>
+        <h1 class="site-title">Media Showcase</h1>
+        <p class="site-subtitle">A curated collection of photos and videos</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Photo 1 -->
+        <article class="media-item">
+            <div class="media-container">
+                <img 
+                    src="img1.png" 
+                    alt="Scenic landscape photograph"
+                    loading="lazy"
+                >
+            </div>
+            <h2 class="media-title">poster 1</h2>
+            <p class="media-description">Captured moments in nature</p>
+        </article>
+
+        <div class="divider"></div>
+
+        <!-- Video 1 -->
+        <article class="media-item">
+            <div class="video-wrapper">
+                <video 
+                    controls 
+                    playsinline 
+                    preload="metadata"
+                    poster=""
+                >
+                    <source 
+                        src="https://res.cloudinary.com/dp2mrckc1/video/upload/v1764606560/Untitled_video_-_Made_with_Clipchamp_1_tamzmp.mp4" 
+                        type="video/mp4"
+                    >
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h2 class="media-title">Nakshatra Infotech</h2>
+            <p class="media-description">Dynamic visual experience</p>
+        </article>
+
+        <div class="divider"></div>
+
+        <!-- Photo 2 -->
+        <article class="media-item">
+            <div class="media-container">
+                <img 
+                    src="img2.png" 
+                    alt="Creative photography composition"
+                    loading="lazy"
+                >
+            </div>
+            <h2 class="media-title">Photo 2</h2>
+            <p class="media-description">Artistic perspective</p>
+        </article>
+
+        <div class="divider"></div>
+
+        <!-- Video 2 -->
+        <article class="media-item">
+            <div class="video-wrapper">
+                <video 
+                    controls 
+                    playsinline 
+                    preload="metadata"
+                >
+                    <source 
+                        src="https://res.cloudinary.com/dp2mrckc1/video/upload/v1764606596/Digen_video_1764587019934_hr1yfw.mp4" 
+                        type="video/mp4"
+                    >
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h2 class="media-title">Nakshatra infotech 2</h2>
+            <p class="media-description">Playful motion capture</p>
+        </article>
+
+        <div class="divider"></div>
+
+        <!-- Photo 3 -->
+        <article class="media-item">
+            <div class="media-container">
+                <img 
+                    src="img3.png" 
+                    alt="Stunning visual imagery"
+                    loading="lazy"
+                >
+            </div>
+            <h2 class="media-title">Photo 3</h2>
+            <p class="media-description">Light and shadow interplay</p>
+        </article>
+
+        <div class="divider"></div>
+
     
 
-    <div class="container main-container">
-        <h2>Your RanvirPardeshi DNS Configuration</h2>
+        <!-- Photo 4 -->
+        <article class="media-item">
+            <div class="media-container">
+                <img 
+                    src="img4.png" 
+                    alt="Beautiful captured moment"
+                    loading="lazy"
+                >
+            </div>
+            <h2 class="media-title">Photo 4</h2>
+            <p class="media-description">Timeless beauty frozen</p>
+        </article>
 
-<div class="dns-box">
-    <div class="label">Config ID</div>
-    be2d3f
-</div>
+        <div class="divider"></div>
 
-<div class="dns-box">
-    <div class="label">DNS-over-TLS / QUIC</div>
-    be2d3f.dns.nextdns.io
-</div>
+      
 
-<div class="dns-box">
-    <div class="label">DNS-over-HTTPS</div>
-    https://dns.nextdns.io/be2d3f
-</div>
+    </main>
 
-<div class="dns-box">
-    <div class="label">IPv6</div>
-    2a07:a8c0::be:2d3f<br>
-    2a07:a8c1::be:2d3f
-</div>
+    <!-- Footer Section -->
+    <footer>
+        <p class="footer-text">© 2024 Media Showcase. All rights reserved.</p>
+    </footer>
 
-<div class="dns-box">
-    <div class="label">DNS Servers</div>
-    45.90.28.140<br>
-    45.90.30.140
-</div>
-
-<h2>Copy & Paste Anywhere</h2></h2>
-
-        
-
-        
-
-        
-
-        
-
-        
-    <br><br>
-<div class="dns-box">
-    <div class="label">Website</div>
-    <a href="https://www.ranvirpardeshi.me" style="color:#4ea3ff; text-decoration:none;">www.ranvirpardeshi.me</a>
-</div>
-
-<div class="dns-box">
-    <div class="label">GitHub</div>
-    <a href="https://github.com/ranvir80" style="color:#4ea3ff; text-decoration:none;">github.com/ranvir80</a>
-</div>
-
-</div>
 </body>
 </html>
