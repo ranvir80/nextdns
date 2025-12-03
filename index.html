@@ -3,498 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranvir Pardeshi | Nakshatra Infotech Media</title>
+    <title>AI Marketing Videos & Photo Showcase of Nakshatra Infotech</title>
+    
+    <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><text x=%2250%22 y=%2270%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2250%22 fill=%22%23d4af37%22 text-anchor=%22middle%22>RP</text></svg>">
+
     <style>
-        /* --- 1. CORE VARIABLES & RESET --- */
+        /* --- 1. PREMIUM VARIABLES & RESET --- */
         :root {
-            --bg-color: #050505;
-            --card-bg: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent-gold: #d4af37; /* Premium Legacy Gold */
-            --accent-glow: rgba(212, 175, 55, 0.3);
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --bg-body: #050505;
+            --bg-panel: #0a0a0a;
+            --bg-card: #121212;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --gold: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             font-family: var(--font-main);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            overflow-y: scroll; /* Always show scrollbar to prevent layout shift */
         }
 
-        /* --- 2. TYPOGRAPHY & UTILS --- */
-        h1, h2, h3 { font-weight: 300; letter-spacing: -0.5px; }
-        .text-gold { color: var(--accent-gold); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
-        .hidden { display: none !important; }
+        /* --- 2. HEADER & BRANDING --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-body) 100%);
+            border-bottom: 1px solid var(--border);
+        }
 
-        /* --- 3. NAVIGATION --- */
-        nav {
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: #000;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        h1 span { color: var(--gold); font-weight: 600; }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- 3. TAB NAVIGATION --- */
+        .tabs-container {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
-            padding: 20px 0;
+            padding: 15px 0;
+            margin-bottom: 40px;
         }
-        .nav-content {
+
+        .tabs-wrapper {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 40px;
         }
-        .brand h1 { font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .brand span { font-size: 0.8rem; color: var(--text-secondary); display: block; margin-top: 2px; }
-        
-        .nav-links button {
+
+        .tab-btn {
             background: none;
             border: none;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-left: 25px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: color 0.3s ease;
+            padding: 10px 20px;
+            position: relative;
+            transition: all 0.3s var(--ease);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .nav-links button:hover { color: var(--accent-gold); }
 
-        /* --- 4. HERO SECTION --- */
-        .hero {
-            padding: 100px 0 60px;
-            text-align: center;
-        }
-        .hero h2 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .tab-btn:hover { color: #fff; }
 
-        /* --- 5. SKELETON LOADERS --- */
-        .skeleton {
-            background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
+        .tab-btn.active {
+            color: var(--gold);
         }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* --- 6. VIDEO SECTION (Netflix Slider) --- */
-        .section-header { margin-bottom: 30px; border-left: 3px solid var(--accent-gold); padding-left: 15px; }
-        .section-header h3 { font-size: 1.5rem; color: #fff; }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px; /* Align with border-bottom of container */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            box-shadow: 0 -5px 10px var(--gold-glow);
+        }
+
+        /* --- 4. CONTENT PANELS --- */
+        .panel {
+            display: none; /* Hidden by default */
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+            animation: fadeIn 0.6s var(--ease);
+        }
         
-        .video-scroller {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-gold) var(--bg-color);
-        }
-        .video-scroller::-webkit-scrollbar { height: 6px; }
-        .video-scroller::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
+        .panel.active { display: block; }
 
-        .video-card {
-            min-width: 300px;
-            height: 500px; /* Vertical Video Aspect Ratio */
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--card-bg);
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Sort Label */
+        .sort-label {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-left: 2px solid var(--gold);
+            padding-left: 10px;
+        }
+
+        /* --- 5. GRID LAYOUTS --- */
+        
+        /* Video Grid - Larger Cards */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .media-card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s var(--ease), border-color 0.3s;
             cursor: pointer;
-            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-            flex-shrink: 0;
         }
-        .video-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-color: var(--accent-gold);
+
+        .media-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
-        .video-card video {
+
+        /* Aspect Ratios */
+        .video-card-inner { aspect-ratio: 9/16; position: relative; }
+        .photo-card-inner { aspect-ratio: 1/1; position: relative; }
+
+        .media-card img, .media-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
+            opacity: 0.8;
             transition: opacity 0.3s;
         }
-        .video-card:hover video { opacity: 1; }
-        
-        .play-overlay {
+
+        .media-card:hover img, .media-card:hover video { opacity: 1; }
+
+        /* Overlays */
+        .card-info {
             position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             padding: 20px;
             background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            z-index: 2;
         }
+
+        .file-name {
+            font-size: 0.85rem;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .upload-tag {
+            font-size: 0.7rem;
+            color: var(--gold);
+            margin-bottom: 4px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
         .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 3rem;
             color: #fff;
-            margin-bottom: auto;
-            align-self: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s var(--ease);
-            margin-top: 50%;
+            opacity: 0.7;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        .video-card:hover .play-icon { opacity: 1; transform: translateY(0); }
-        .video-title { font-size: 0.9rem; font-weight: 500; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .media-card:hover .play-icon { color: var(--gold); opacity: 1; }
 
-        /* --- 7. PHOTO SECTION (Masonry/Grid) --- */
+        /* Photo Grid - Masonry style feel */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
         }
-        .photo-card {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: zoom-in;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            aspect-ratio: 1 / 1; /* Clean Square Grid */
-        }
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s var(--ease);
-        }
-        .photo-card:hover img { transform: scale(1.05); }
 
-        /* --- 8. MODALS --- */
+        /* --- 6. MODAL --- */
         .modal {
             position: fixed;
-            inset: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
         }
-        .modal.active { opacity: 1; pointer-events: all; }
-        
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-        }
-        .modal-media {
-            max-width: 100%;
-            max-height: 85vh;
-            border-radius: 4px;
+        .modal.open { opacity: 1; pointer-events: all; }
+
+        .modal-content { max-width: 90vw; max-height: 90vh; }
+        .modal-content img, .modal-content video {
+            max-width: 100%; max-height: 90vh;
+            border: 1px solid var(--border);
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
-        .modal-close {
+
+        .close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
             color: #fff;
             font-size: 2rem;
             cursor: pointer;
-            z-index: 1001;
             background: none;
             border: none;
         }
-        .modal-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .modal-nav-btn:hover { background: var(--accent-gold); border-color: var(--accent-gold); color: black; }
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
 
-        /* --- 9. FOOTER --- */
+        /* --- 7. SKELETON LOADER --- */
+        .skeleton {
+            background: #111;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { background: #111; } 50% { background: #1a1a1a; } 100% { background: #111; } }
+
+        /* Mobile */
+        @media(max-width: 768px) {
+            .tabs-wrapper { gap: 20px; }
+            .tab-btn { font-size: 0.9rem; padding: 10px 15px; }
+            .video-grid { grid-template-columns: 1fr; } 
+        }
+
         footer {
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
             text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        footer strong { color: #fff; }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 2rem; }
-            .modal-nav-btn { display: none; /* Swipe used instead logic typically, simplified here */ }
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="container nav-content">
-            <div class="brand">
-                <h1>Ranvir Pardeshi</h1>
-                <span>Nakshatra Infotech</span>
-            </div>
-            <div class="nav-links">
-                <button onclick="scrollToSection('videos')">Videos</button>
-                <button onclick="scrollToSection('photos')">Photos</button>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <div class="logo-circle">RP</div>
+        <h1>AI Marketing Videos & Photo Showcase<br><span>of Nakshatra Infotech</span></h1>
+        <p class="subtitle">Ranvir Pardeshi • Official Media Portfolio</p>
+    </header>
 
-    <div class="container hero">
-        <h2>AI Marketing Showcase</h2>
-        <p>Premium automation media curated for the modern digital era.</p>
-    </div>
-
-    <div class="container" id="videos">
-        <div class="section-header">
-            <h3>AI Marketing Videos</h3>
-        </div>
-        <div class="video-scroller" id="video-container">
-            <div class="video-card skeleton"></div>
-            <div class="video-card skeleton"></div>
-            <div class="video-card skeleton"></div>
+    <div class="tabs-container">
+        <div class="tabs-wrapper">
+            <button class="tab-btn active" onclick="switchTab('videos')">Videos Collection</button>
+            <button class="tab-btn" onclick="switchTab('photos')">Photo Gallery</button>
         </div>
     </div>
 
-    <div style="height: 80px;"></div>
+    <div id="videos-panel" class="panel active">
+        <div class="container">
+            <span class="sort-label">▼ Sorted by Newest Uploads</span>
+            <div class="video-grid" id="video-grid">
+                <div class="media-card skeleton"><div class="video-card-inner"></div></div>
+                <div class="media-card skeleton"><div class="video-card-inner"></div></div>
+                <div class="media-card skeleton"><div class="video-card-inner"></div></div>
+            </div>
+        </div>
+    </div>
 
-    <div class="container" id="photos">
-        <div class="section-header">
-            <h3>AI Marketing Photos</h3>
+    <div id="photos-panel" class="panel">
+        <div class="container">
+            <span class="sort-label">▼ Sorted by Newest Uploads</span>
+            <div class="photo-grid" id="photo-grid">
+                <div class="media-card skeleton"><div class="photo-card-inner"></div></div>
+                <div class="media-card skeleton"><div class="photo-card-inner"></div></div>
+                <div class="media-card skeleton"><div class="photo-card-inner"></div></div>
+                <div class="media-card skeleton"><div class="photo-card-inner"></div></div>
+            </div>
         </div>
-        <div class="photo-grid" id="photo-container">
-            <div class="photo-card skeleton" style="height: 300px;"></div>
-            <div class="photo-card skeleton" style="height: 300px;"></div>
-            <div class="photo-card skeleton" style="height: 300px;"></div>
-            <div class="photo-card skeleton" style="height: 300px;"></div>
-        </div>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal()">
+        <button class="close-btn">&times;</button>
+        <div class="modal-content" id="modal-content" onclick="event.stopPropagation()">
+            </div>
     </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 <strong>Ranvir Pardeshi</strong>. All Rights Reserved.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">Powered by AI & GitHub API</p>
-        </div>
+        <p>&copy; 2025 Ranvir Pardeshi. Nakshatra Infotech.<br>Powered by GitHub API.</p>
     </footer>
-
-    <div class="modal" id="media-modal">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <div class="modal-content">
-            <div id="modal-body"></div>
-        </div>
-        <button class="modal-nav-btn prev-btn" onclick="changeMedia(-1)">&#10094;</button>
-        <button class="modal-nav-btn next-btn" onclick="changeMedia(1)">&#10095;</button>
-    </div>
 
     <script>
         // ==========================================
-        // CONFIGURATION (UPDATE THESE!)
+        // ✅ USER CONFIGURATION
         // ==========================================
-        const REPO_OWNER = 'ranvir80'; // e.g., 'ranvirpardeshi'
-        const REPO_NAME = 'nextdns';       // e.g., 'media-showcase'
+        const REPO_OWNER = 'ranvir80'; 
+        const REPO_NAME = 'nextdns';
         // ==========================================
 
         const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
         const RAW_BASE = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main`;
 
-        let videoList = [];
-        let photoList = [];
-        let currentMediaList = []; // Tracks which list is currently in modal
-        let currentIndex = 0;
+        // TAB LOGIC
+        function switchTab(tabName) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-        // --- 1. Fetching Logic ---
-        async function fetchDirectory(path) {
+            // Update Panels
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(`${tabName}-panel`).classList.add('active');
+        }
+
+        // FETCH LOGIC
+        async function loadMedia() {
+            // Load Videos
+            fetchAndRender('video', 'video-grid', true);
+            // Load Photos
+            fetchAndRender('photo', 'photo-grid', false);
+        }
+
+        async function fetchAndRender(folder, elementId, isVideo) {
+            const container = document.getElementById(elementId);
+            
             try {
-                // Check Session Storage for caching to save API calls
-                const cacheKey = `media_${path}`;
-                const cached = sessionStorage.getItem(cacheKey);
-                if (cached) return JSON.parse(cached);
+                const response = await fetch(`${API_BASE}/${folder}`);
+                if (!response.ok) throw new Error('Failed to load');
+                let files = await response.json();
 
-                const response = await fetch(`${API_BASE}/${path}`);
-                if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
-                
-                const data = await response.json();
-                
-                // Sort by name descending (Simulating "Newest First" if files are named sequentially)
-                // Note: True 'creation date' via API requires 1 request per file, hitting rate limits instantly.
-                const sortedData = data.sort((a, b) => b.name.localeCompare(a.name));
-                
-                sessionStorage.setItem(cacheKey, JSON.stringify(sortedData));
-                return sortedData;
-            } catch (error) {
-                console.error(`Error fetching ${path}:`, error);
-                return [];
+                // SORTING: Newest First (Descending by Name)
+                // This assumes files are named like 2025-12-01.mp4 or IMG_002.jpg
+                // Higher numbers/dates will appear first.
+                files.sort((a, b) => b.name.localeCompare(a.name));
+
+                // Clear skeletons
+                container.innerHTML = '';
+
+                if (files.length === 0) {
+                    container.innerHTML = `<p style="color:#444;">No media found in /${folder}</p>`;
+                    return;
+                }
+
+                files.forEach(file => {
+                    // Filter extensions
+                    const validVideo = /\.(mp4|webm|mov)$/i;
+                    const validPhoto = /\.(jpg|jpeg|png|webp|gif)$/i;
+
+                    if (isVideo && !validVideo.test(file.name)) return;
+                    if (!isVideo && !validPhoto.test(file.name)) return;
+
+                    const url = `${RAW_BASE}/${folder}/${file.name}`;
+                    const name = file.name;
+
+                    const card = document.createElement('div');
+                    card.className = 'media-card';
+                    card.onclick = () => openModal(url, isVideo);
+
+                    if (isVideo) {
+                        card.innerHTML = `
+                            <div class="video-card-inner">
+                                <div class="play-icon">▶</div>
+                                <video src="${url}#t=0.1" preload="metadata" muted playsinline></video>
+                                <div class="card-info">
+                                    <span class="upload-tag">Video</span>
+                                    <div class="file-name">${name}</div>
+                                </div>
+                            </div>
+                        `;
+                        // Hover preview
+                        card.addEventListener('mouseenter', () => {
+                            const v = card.querySelector('video');
+                            if(v) v.play().catch(()=>{});
+                        });
+                        card.addEventListener('mouseleave', () => {
+                            const v = card.querySelector('video');
+                            if(v) { v.pause(); v.currentTime = 0; }
+                        });
+
+                    } else {
+                        card.innerHTML = `
+                            <div class="photo-card-inner">
+                                <img src="${url}" loading="lazy" alt="${name}">
+                                <div class="card-info">
+                                    <div class="file-name">${name}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    container.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `<p style="color:red;">Error loading ${folder}. Check Repo Settings.</p>`;
             }
         }
 
-        // --- 2. Render Functions ---
-        function createVideoCard(file, index) {
-            const cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/-/g, " ");
-            const rawUrl = `${RAW_BASE}/video/${file.name}`;
+        // MODAL LOGIC
+        function openModal(url, isVideo) {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
             
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            card.onclick = () => openModal('video', index);
-
-            // Using video tag as thumbnail (poster not available without backend)
-            // muted & preload metadata ensures it loads fast
-            card.innerHTML = `
-                <div class="play-overlay">
-                    <div class="play-icon">▶</div>
-                    <div class="video-title">${cleanName}</div>
-                </div>
-                <video src="${rawUrl}#t=0.1" preload="metadata" muted playsinline></video>
-            `;
-            
-            // Hover preview effect
-            card.addEventListener('mouseenter', () => {
-                const v = card.querySelector('video');
-                v.play().catch(e => {}); // Ignore interaction errors
-            });
-            card.addEventListener('mouseleave', () => {
-                const v = card.querySelector('video');
-                v.pause();
-                v.currentTime = 0;
-            });
-
-            return card;
-        }
-
-        function createPhotoCard(file, index) {
-            const rawUrl = `${RAW_BASE}/photo/${file.name}`;
-            const card = document.createElement('div');
-            card.className = 'photo-card';
-            card.onclick = () => openModal('photo', index);
-            
-            card.innerHTML = `
-                <img src="${rawUrl}" loading="lazy" alt="${file.name}">
-            `;
-            return card;
-        }
-
-        async function init() {
-            // Load Videos
-            const videoContainer = document.getElementById('video-container');
-            videoList = (await fetchDirectory('video')).filter(f => f.name.match(/\.(mp4|mov|webm)$/i));
-            
-            videoContainer.innerHTML = ''; // Clear skeleton
-            if(videoList.length === 0) videoContainer.innerHTML = '<p style="color:#666; padding:20px;">No videos found.</p>';
-            
-            videoList.forEach((file, index) => {
-                videoContainer.appendChild(createVideoCard(file, index));
-            });
-
-            // Load Photos
-            const photoContainer = document.getElementById('photo-container');
-            photoList = (await fetchDirectory('photo')).filter(f => f.name.match(/\.(jpg|jpeg|png|webp)$/i));
-            
-            photoContainer.innerHTML = ''; // Clear skeleton
-            if(photoList.length === 0) photoContainer.innerHTML = '<p style="color:#666; padding:20px;">No photos found.</p>';
-
-            photoList.forEach((file, index) => {
-                photoContainer.appendChild(createPhotoCard(file, index));
-            });
-        }
-
-        // --- 3. Modal / Lightbox Logic ---
-        const modal = document.getElementById('media-modal');
-        const modalBody = document.getElementById('modal-body');
-
-        function openModal(type, index) {
-            currentIndex = index;
-            currentMediaList = type === 'video' ? videoList : photoList;
-            updateModalContent(type);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop background scroll
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            modalBody.innerHTML = ''; // Stop video playback
-            document.body.style.overflow = 'auto';
-        }
-
-        function updateModalContent(type) {
-            if(!currentMediaList[currentIndex]) return;
-            
-            const file = currentMediaList[currentIndex];
-            const isVideo = type === 'video' || file.name.match(/\.(mp4|mov|webm)$/i);
-            const folder = isVideo ? 'video' : 'photo';
-            const rawUrl = `${RAW_BASE}/${folder}/${file.name}`;
-
-            modalBody.innerHTML = '';
+            content.innerHTML = ''; // clear previous
 
             if (isVideo) {
                 const video = document.createElement('video');
-                video.className = 'modal-media';
+                video.src = url;
                 video.controls = true;
                 video.autoplay = true;
-                video.src = rawUrl;
-                // Auto next on end
-                video.onended = () => changeMedia(1);
-                modalBody.appendChild(video);
+                content.appendChild(video);
             } else {
                 const img = document.createElement('img');
-                img.className = 'modal-media';
-                img.src = rawUrl;
-                modalBody.appendChild(img);
+                img.src = url;
+                content.appendChild(img);
             }
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
         }
 
-        function changeMedia(direction) {
-            let nextIndex = currentIndex + direction;
-            if (nextIndex < 0) nextIndex = currentMediaList.length - 1;
-            if (nextIndex >= currentMediaList.length) nextIndex = 0;
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
             
-            currentIndex = nextIndex;
-            
-            // Determine type based on file extension in the list
-            const fileName = currentMediaList[currentIndex].name;
-            const isVideo = fileName.match(/\.(mp4|mov|webm)$/i);
-            updateModalContent(isVideo ? 'video' : 'photo');
+            modal.classList.remove('open');
+            setTimeout(() => {
+                content.innerHTML = ''; // Stop playback
+            }, 300);
+            document.body.style.overflow = 'auto';
         }
 
-        // Keyboard Navigation
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-            if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowLeft') changeMedia(-1);
-            if (e.key === 'ArrowRight') changeMedia(1);
-        });
-
-        // Click outside to close
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Run
-        init();
+        // Initialize
+        loadMedia();
 
     </script>
 </body>
