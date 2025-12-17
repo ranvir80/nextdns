@@ -98,6 +98,118 @@
             50% { transform: translateX(-50%) translateY(-5px); }
         }
 
+        /* Floating YouTube Button */
+        .floating-yt-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4), 0 0 0 0 rgba(255, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .floating-yt-btn::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .floating-yt-btn:hover::before {
+            opacity: 0.7;
+        }
+
+        .floating-yt-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 40px rgba(255, 0, 0, 0.6), 0 0 0 8px rgba(255, 0, 0, 0.2);
+        }
+
+        .floating-yt-btn:active {
+            transform: scale(0.95);
+        }
+
+        .yt-icon {
+            font-size: 30px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .yt-tooltip {
+            position: absolute;
+            right: 75px;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+        }
+
+        .yt-tooltip::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: var(--bg-elevated);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .floating-yt-btn:hover .yt-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4), 0 0 0 0 rgba(255, 0, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4), 0 0 0 15px rgba(255, 0, 0, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .floating-yt-btn {
+                bottom: 80px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .yt-icon {
+                font-size: 24px;
+            }
+
+            .yt-tooltip {
+                display: none;
+            }
+        }
+
         /* ============================================
            2. HEADER
         ============================================ */
@@ -1003,6 +1115,12 @@
         <span>🔊</span>
         <span>Tap to enable sound on hover</span>
     </div>
+
+    <!-- Floating YouTube Button -->
+    <a href="yt.html" class="floating-yt-btn" title="Watch Featured Video">
+        <span class="yt-icon">▶️</span>
+        <span class="yt-tooltip">Watch Featured Video</span>
+    </a>
 
     <!-- Main Gallery View -->
     <div id="galleryView">
