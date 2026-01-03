@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Download Mods</title>
+</head>
+<body>
+  <h2>Download all mods</h2>
+  <button onclick="downloadAll()">Download All Files</button>
+
+  <script>
+    const apiUrl = "https://api.github.com/repos/ranvir80/nextdns/contents/mods";
+
+    async function downloadAll() {
+      const res = await fetch(apiUrl);
+      const files = await res.json();
+
+      for (const file of files) {
+        if (file.type === "file") {
+          const a = document.createElement("a");
+          a.href = file.download_url;
+          a.download = file.name;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
