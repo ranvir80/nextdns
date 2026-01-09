@@ -4,8 +4,15 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'AMS Aditya';
+    src: url('AMS-Aaditya.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-family: 'AMS Aditya', 'Noto Sans Devanagari', sans-serif;
     background-color: #f5f5f5;
     min-height: 100vh;
     display: flex;
