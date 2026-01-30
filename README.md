@@ -120,7 +120,7 @@ Restart the system normally.
 - Legacy BIOS systems usually do not need EFI rebuild.
 - Always complete each step before proceeding.
 
----
+---https://limewire.com/d/YXIK5#6ePpxSIz4Z
 
 ## Author
 Ranvir Pardeshi
